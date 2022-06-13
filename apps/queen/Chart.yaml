@@ -1,5 +1,5 @@
 apiVersion: v2
-name: queen
+name: queen-deploy
 version: 1.0.0
 dependencies:
   - name: queen

@@ -6,7 +6,7 @@ ui:
   image:
     name: inseefr/queen
     version: latest
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
   podLabels: {}
   podSecurityContext:
     {}
@@ -23,7 +23,7 @@ ui:
   service:
     type: ClusterIP
     port: 80
-  
+
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -34,7 +34,7 @@ ui:
     name: ""
 
   ingress:
-    enabled: false
+    enabled: true
     annotations:
       {}
       # kubernetes.io/ingress.class: nginx
