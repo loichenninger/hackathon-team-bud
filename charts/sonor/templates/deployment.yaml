@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-              name: {{ template "queen.fullname" . }}
+              name: {{ template "sonor.fullname" . }}
           ports:
             - name: http
               containerPort: 80
