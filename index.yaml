@@ -32,4 +32,15 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/queen-0.2.2/queen-0.2.2.tgz
     version: 0.2.2
-generated: "2022-06-13T11:46:02.11337586Z"
+  sonor:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-13T11:48:43.761040701Z"
+    description: A Helm chart for Kubernetes
+    digest: cee43ff02bc93858548ee70648d1131ce9cd3ce41167fefa4a8bbfbe3bba0467
+    name: sonor
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/sonor-0.1.0/sonor-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-13T11:48:43.761047501Z"
