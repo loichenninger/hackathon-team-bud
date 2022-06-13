@@ -2,17 +2,17 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "queen.name" -}}
+{{- define "pearl.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "queen.ui.name" -}}
-{{- printf "%s-%s" (include "queen.name" .) .Values.ui.name | trunc 63 | trimSuffix "-" -}}
+{{- define "pearl.ui.name" -}}
+{{- printf "%s-%s" (include "pearl.name" .) .Values.ui.name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 
-{{- define "queen.api.name" -}}
-{{- printf "%s-%s" (include "queen.name" .) .Values.api.name | trunc 63 | trimSuffix "-" -}}
+{{- define "pearl.api.name" -}}
+{{- printf "%s-%s" (include "pearl.name" .) .Values.api.name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 
@@ -21,7 +21,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "queen.fullname" -}}
+{{- define "pearl.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -34,54 +34,54 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 
-{{- define "queen.ui.fullname" -}}
-{{- printf "%s-%s" (include "queen.fullname" .) .Values.ui.name | trunc 63 | trimSuffix "-" -}}
+{{- define "pearl.ui.fullname" -}}
+{{- printf "%s-%s" (include "pearl.fullname" .) .Values.ui.name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 
-{{- define "queen.api.fullname" -}}
-{{- printf "%s-%s" (include "queen.fullname" .) .Values.api.name | trunc 63 | trimSuffix "-" -}}
+{{- define "pearl.api.fullname" -}}
+{{- printf "%s-%s" (include "pearl.fullname" .) .Values.api.name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "queen.chart" -}}
-{{- printf "queen" -}}
+{{- define "pearl.chart" -}}
+{{- printf "pearl" -}}
 {{- end -}}
 
-{{- define "queen.api.chart" -}}
-{{- printf "queen-api" -}}
+{{- define "pearl.api.chart" -}}
+{{- printf "pearl-api" -}}
 {{- end -}}
 
-{{- define "queen.ui.chart" -}}
-{{- printf "queen-ui" -}}
+{{- define "pearl.ui.chart" -}}
+{{- printf "pearl-ui" -}}
 {{- end -}}
 
 
 {{/*Common labels*/}}
 
-{{- define "queen.labels" -}}
-helm.sh/chart: {{ include "queen.chart" . }}
-{{ include "queen.selectorLabels" . }}
+{{- define "pearl.labels" -}}
+helm.sh/chart: {{ include "pearl.chart" . }}
+{{ include "pearl.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
-{{- define "queen.api.labels" -}}
-helm.sh/chart: {{ include "queen.api.chart" . }}
-{{ include "queen.api.selectorLabels" . }}
+{{- define "pearl.api.labels" -}}
+helm.sh/chart: {{ include "pearl.api.chart" . }}
+{{ include "pearl.api.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
-{{- define "queen.ui.labels" -}}
-helm.sh/chart: {{ include "queen.ui.chart" . }}
-{{ include "queen.ui.selectorLabels" . }}
+{{- define "pearl.ui.labels" -}}
+helm.sh/chart: {{ include "pearl.ui.chart" . }}
+{{ include "pearl.ui.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -89,35 +89,35 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*Selector labels*/}}
-{{- define "queen.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "queen.name" . }}
+{{- define "pearl.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "pearl.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 
-{{- define "queen.api.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "queen.api.name" . }}
+{{- define "pearl.api.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "pearl.api.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
-{{- define "queen.ui.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "queen.ui.name" . }}
+{{- define "pearl.ui.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "pearl.ui.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*Create the name of the service account to use*/}}
 
-{{- define "queen.api.serviceAccountName" -}}
+{{- define "pearl.api.serviceAccountName" -}}
 {{- if .Values.api.serviceAccount.create -}}
-    {{ default (include "queen.api.fullname" .) .Values.api.serviceAccount.name }}
+    {{ default (include "pearl.api.fullname" .) .Values.api.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.api.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
 
-{{- define "queen.ui.serviceAccountName" -}}
+{{- define "pearl.ui.serviceAccountName" -}}
 {{- if .Values.ui.serviceAccount.create -}}
-    {{ default (include "queen.ui.fullname" .) .Values.ui.serviceAccount.name }}
+    {{ default (include "pearl.ui.fullname" .) .Values.ui.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.ui.serviceAccount.name }}
 {{- end -}}

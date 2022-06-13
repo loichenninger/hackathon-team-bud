@@ -1,12 +1,12 @@
 {{- if .Values.ui.ingress.enabled -}}
-{{- $fullName := include "queen.ui.fullname" . -}}
+{{- $fullName := include "pearl.ui.fullname" . -}}
 {{- $svcPort := .Values.ui.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "queen.ui.labels" . | nindent 4 }}
+    {{- include "pearl.ui.labels" . | nindent 4 }}
   {{- with .Values.ui.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

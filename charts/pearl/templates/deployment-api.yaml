@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "queen.api.fullname" . }}
+  name: {{ include "pearl.api.fullname" . }}
   labels:
-    {{- include "queen.api.labels" . | nindent 4 }}
+    {{- include "pearl.api.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.api.replicaCount }}
   selector:
     matchLabels:
-      {{- include "queen.api.selectorLabels" . | nindent 6 }}
+      {{- include "pearl.api.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       labels:
-        {{- include "queen.api.selectorLabels" . | nindent 8 }}
+        {{- include "pearl.api.selectorLabels" . | nindent 8 }}
 {{- with .Values.api.podLabels }}
 {{ toYaml . | indent 8 }}
 {{- end }}
     spec:
-      serviceAccountName: {{ include "queen.api.serviceAccountName" . }}
+      serviceAccountName: {{ include "pearl.api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.api.podSecurityContext | nindent 8 }}
       containers:
@@ -28,20 +28,20 @@ spec:
             {{- toYaml .Values.api.securityContext | nindent 12 }}
           image: "{{ .Values.api.image.name }}:{{ .Values.api.image.version }}"
           env:
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PASSWORD
+            - name: FR_INSEE_PEARLJAM_PERSISTENCE_DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.postgresql.fullnameOverride }}
                   key: password
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER
+            - name: FR_INSEE_PEARLJAM_PERSISTENCE_DATABASE_USER
               value: {{ .Values.postgresql.auth.username | quote}}
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST
+            - name: FR_INSEE_PEARLJAM_PERSISTENCE_DATABASE_HOST
               value: {{ .Values.postgresql.fullnameOverride | quote}}
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
+            - name: FR_INSEE_PEARLJAM_PERSISTENCE_DATABASE_SCHEMA
               value: {{ .Values.postgresql.auth.database | quote}}
           envFrom:
             - configMapRef:
-                name: {{ template "queen.fullname" . }}
+                name: {{ template "pearl.fullname" . }}
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
           ports:
             - name: http

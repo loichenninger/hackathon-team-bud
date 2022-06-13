@@ -1,6 +1,6 @@
 apiVersion: v2
-name: queen
-description: A Helm chart for Queen
+name: pearl
+description: A Helm chart for pearl
 
 dependencies:
   - name: postgresql

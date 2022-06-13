@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "queen.ui.fullname" . }}
+  name: {{ include "pearl.ui.fullname" . }}
   labels:
-    {{- include "queen.ui.labels" . | nindent 4 }}
+    {{- include "pearl.ui.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.ui.replicaCount }}
   selector:
     matchLabels:
-      {{- include "queen.ui.selectorLabels" . | nindent 6 }}
+      {{- include "pearl.ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "queen.ui.selectorLabels" . | nindent 8 }}
+        {{- include "pearl.ui.selectorLabels" . | nindent 8 }}
 {{- with .Values.ui.podLabels }}
 {{ toYaml . | indent 8 }}
 {{- end }}
@@ -21,7 +21,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "queen.ui.serviceAccountName" . }}
+      serviceAccountName: {{ include "pearl.ui.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.ui.podSecurityContext | nindent 8 }}
       containers:
