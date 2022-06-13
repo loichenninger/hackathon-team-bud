@@ -1,0 +1,19 @@
+pearl:
+  ui:
+    ingress:
+      enabled: true
+      hosts:
+        - host: pearl.dev.insee.io
+          paths:
+            - path: /
+
+  api:
+    ingress:
+      enabled: true
+      hosts:
+        - host: pearl.api.dev.insee.io
+          paths:
+            - path: /
+
+  postgresql:
+    enable: true
