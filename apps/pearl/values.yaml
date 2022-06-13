@@ -1,4 +1,4 @@
-pearl-deploy:
+pearl:
   ui:
     ingress:
       enabled: true
@@ -6,6 +6,9 @@ pearl-deploy:
         - host: pearl.dev.insee.io
           paths:
             - path: /
+      tls:
+        - hosts:
+          - pearl.dev.insee.io
 
   api:
     ingress:
@@ -14,6 +17,9 @@ pearl-deploy:
         - host: pearl-api.dev.insee.io
           paths:
             - path: /
+      tls:
+        - hosts:
+          - pearl-api.dev.insee.io
 
   postgresql:
     enable: true
