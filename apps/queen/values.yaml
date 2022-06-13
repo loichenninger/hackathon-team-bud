@@ -1,4 +1,4 @@
-queen-deploy:
+queen:
   ui:
     replicaCount: 1
     image:
