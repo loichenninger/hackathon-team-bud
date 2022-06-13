@@ -65,6 +65,16 @@ entries:
   sonor:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-06-13T15:22:02.795244655Z"
+    description: A Helm chart for Kubernetes
+    digest: 275850c8329de7bebbc8be6b326de305fe9c62a31d9c6274ca6ce35bf7a72842
+    name: sonor
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/sonor-0.1.4/sonor-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-06-13T14:53:29.751612304Z"
     description: A Helm chart for Kubernetes
     digest: e256f7261a966a3b5df24a28e8c715aa207bed6ff31ce3e46e3adf80a7c945a9
@@ -103,4 +113,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/sonor-0.1.0/sonor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-13T14:53:29.751633304Z"
+generated: "2022-06-13T15:22:02.795264954Z"
