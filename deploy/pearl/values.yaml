@@ -11,7 +11,7 @@ pearl:
     ingress:
       enabled: true
       hosts:
-        - host: pearl.api.dev.insee.io
+        - host: pearl-api.dev.insee.io
           paths:
             - path: /
 
