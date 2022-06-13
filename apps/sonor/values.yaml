@@ -8,6 +8,8 @@ sonor:
       - host: sonor-host.dev.insee.io
         paths:
           - path: /
+            pathType: ImplementationSpecific
+
   tls:
     - hosts:
         - sonor-tls.dev.insee.io
