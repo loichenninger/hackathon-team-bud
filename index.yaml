@@ -34,6 +34,21 @@ entries:
   queen:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-06-13T12:27:36.1163604Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.26
+    description: A Helm chart for Queen
+    digest: 9eadef31c729dccd39cc8d658c8305d1c1e070b0ca670e3015da387229ef3c01
+    name: queen
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/queen-0.2.3/queen-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-06-13T11:21:32.640515839Z"
     dependencies:
     - condition: postgresql.enabled
@@ -58,4 +73,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/sonor-0.1.0/sonor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-13T11:52:19.21415624Z"
+generated: "2022-06-13T12:27:36.116386Z"
