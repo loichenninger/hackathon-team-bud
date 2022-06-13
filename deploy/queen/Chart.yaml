@@ -1,0 +1,7 @@
+apiVersion: v2
+name: queen
+version: 1.0.0
+dependencies:
+  - name: queen
+    version: 0.2.2
+    repository: https://inseefrlab.github.io/hackathon-team-bud
