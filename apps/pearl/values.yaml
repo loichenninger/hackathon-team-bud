@@ -1,4 +1,4 @@
-pearl:
+pearl-deploy:
   ui:
     ingress:
       enabled: true
