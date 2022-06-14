@@ -143,4 +143,20 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/sonor-0.1.0/sonor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-14T13:07:57.794896731Z"
+  stromae:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-14T16:31:17.611688997Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.26
+    description: A Helm chart for Kubernetes
+    digest: e95ab5bb5ebbe41e85ed9765b39f4557ea20fc9c77f2a389bbf46999b7ba0ca4
+    name: stromae
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/stromae-0.1.0/stromae-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-14T16:31:17.611710497Z"
