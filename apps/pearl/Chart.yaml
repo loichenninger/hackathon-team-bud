@@ -1,7 +1,0 @@
-apiVersion: v2
-name: pearl-deploy
-version: 0.1.0
-dependencies:
-  - name: pearl
-    version: 0.0.3
-    repository: https://inseefrlab.github.io/hackathon-team-bud

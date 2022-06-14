@@ -1,7 +1,0 @@
-apiVersion: v2
-name: sonor-deploy
-version: 1.0.0
-dependencies:
-  - name: sonor
-    version: 0.0.1
-    repository: https://inseefrlab.github.io/hackathon-team-bud
