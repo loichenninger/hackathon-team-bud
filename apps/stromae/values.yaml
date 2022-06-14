@@ -43,7 +43,7 @@ queen:
       FR_INSEE_QUEEN_PILOTAGE_INTEGRATION_OVERRIDE: true
 
   postgresql:
-    enable: true
+    enabled: true
     fullnameOverride: stromae-db
     auth:
       username: stromae
