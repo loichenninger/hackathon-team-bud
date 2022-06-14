@@ -1,0 +1,15 @@
+{{- if .Values.api.env }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "stromae.ui.fullname" . }}
+  labels:
+    app: {{ template "stromae.ui.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{- range $key, $value := .Values.api.env }}
+  {{ $key }}: {{ $value | quote }}
+{{- end -}}
+{{- end -}}
