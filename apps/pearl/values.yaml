@@ -23,6 +23,8 @@ pearl:
       tls:
         - hosts:
             - pearl-api.dev.insee.io
+    monitor:
+      enabled: true
     env:
       JAVA_OPTS: "-Dspring.profiles.active=dev -Dspring.config.location=classpath:/,${CATALINA_BASE}/webapps/pearljambo.properties -Dlogging.config=${CATALINA_BASE}/webapps/log4j2.xml"
 
