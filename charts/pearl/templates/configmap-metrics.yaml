@@ -1,0 +1,14 @@
+{{- if .Values.api.monitor.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "pearl.fullname" . }}-metrics
+  labels:
+    app: {{ template "pearl.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  management.endpoints.web.exposure.include: health, info, metrics, prometheus
+  management.metrics.tags.application: {{ .Values.api.monitor.tags | quote }}
+{{- end }}

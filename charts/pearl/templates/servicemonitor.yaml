@@ -1,0 +1,15 @@
+{{- if .Values.api.monitor.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "pearl.api.fullname" . }}-monitor
+  labels:
+    release: kube-prometheus-stack-{{ include "pearl.api.fullname" . }}
+spec:
+  endpoints:
+    - path: "/actuator/prometheus"
+      port: http-traffic
+  selector:
+    matchLabels:
+      {{- include "pearl.api.labels" . | nindent 4 }}
+{{- end }}
