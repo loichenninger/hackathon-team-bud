@@ -40,6 +40,7 @@ queen:
       #Application configuration
       FR_INSEE_QUEEN_APPLICATION_MODE: noauth
       FR_INSEE_QUEEN_APPLICATION_CROSORIGIN: "*"
+      FR_INSEE_QUEEN_PILOTAGE_INTEGRATION_OVERRIDE: false
 
   postgresql:
     enable: true
