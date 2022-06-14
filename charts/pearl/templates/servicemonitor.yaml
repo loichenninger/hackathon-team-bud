@@ -11,5 +11,5 @@ spec:
       port: http-traffic
   selector:
     matchLabels:
-      {{- include "pearl.api.labels" . | nindent 4 }}
+      {{- include "pearl.api.labels" . | nindent 6 }}
 {{- end }}
