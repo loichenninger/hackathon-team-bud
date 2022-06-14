@@ -9,15 +9,15 @@ queen:
       annotations:
         kubernetes.io/ingress.class: nginx
       hosts:
-        - host: queen-demo.dev.insee.io
+        - host: queen.kub.sspcloud.fr
           paths:
             - path: /
       tls:
         - hosts:
-            - queen-demo.dev.insee.io
+            - queen.kub.sspcloud.fr
     env:
-      QUEEN_URL: https://queen-demo.dev.insee.io
-      QUEEN_API_URL: https://api-queen-demo.dev.insee.io
+      QUEEN_URL: https://queen.kub.sspcloud.fr
+      QUEEN_API_URL: https://queen-api.kub.sspcloud.fr
       authenticationType: NONE
 
   api:
@@ -29,12 +29,12 @@ queen:
     ingress:
       enabled: true
       hosts:
-        - host: api-queen-demo.dev.insee.io
+        - host: queen-api.kub.sspcloud.fr
           paths:
             - path: /
       tls:
         - hosts:
-            - api-queen-demo.dev.insee.io
+            - queen-api.kub.sspcloud.fr
     env:
       JAVA_OPTS: -Dlogging.config=${CATALINA_BASE}/webapps/log4j2.xml -Dspring.profiles.active=dev -Dspring.config.location=classpath:/,${CATALINA_BASE}/webapps/queenbo.properties
       #Application configuration
