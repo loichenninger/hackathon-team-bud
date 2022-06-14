@@ -5,16 +5,16 @@ sonor:
   ingress:
     enabled: true
     hosts:
-      - host: sonor-host.dev.insee.io
+      - host: sonor.dev.insee.io
         paths:
           - path: /
             pathType: ImplementationSpecific
 
   tls:
     - hosts:
-        - sonor-tls.dev.insee.io
+        - sonor.dev.insee.io
   env:
     PEARL_JAM_URL: https://pearl-api.dev.insee.io
-    QUEEN_URL_BACK_END: https://api-queen-demo.dev.insee.io
-    QUEEN_URL_FRONT_END: https://queen-demo.dev.insee.io
+    QUEEN_URL_BACK_END: https://queen-api.dev.insee.io
+    QUEEN_URL_FRONT_END: https://queen.dev.insee.io
     AUTHENTICATION_MODE: anonymous
