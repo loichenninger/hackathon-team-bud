@@ -3,6 +3,21 @@ entries:
   pearl:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-06-14T13:07:57.794874131Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.26
+    description: A Helm chart for pearl
+    digest: 2f97aace01d089598ea706cbebe327e15c049c5f017dacfa886e832b83c92eb2
+    name: pearl
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/pearl-0.0.5/pearl-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-06-14T12:43:42.634727002Z"
     dependencies:
     - condition: postgresql.enabled
@@ -128,4 +143,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/sonor-0.1.0/sonor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-14T12:43:42.634754302Z"
+generated: "2022-06-14T13:07:57.794896731Z"
