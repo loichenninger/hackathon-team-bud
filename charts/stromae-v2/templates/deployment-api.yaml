@@ -38,10 +38,10 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /api/healthcheck
-              port: http
+          # livenessProbe:
+          #   httpGet:
+          #     path: /api/healthcheck
+          #     port: http
           # readinessProbe:
           #   httpGet:
           #     path: /api/healthcheck
