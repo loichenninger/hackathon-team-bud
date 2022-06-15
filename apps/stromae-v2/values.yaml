@@ -3,8 +3,8 @@ stromae-v2:
     nameOverride: stromae-ui
     replicaCount: 1
     image:
-      name: inseefr/stromae
-      version: 2.1.70
+      repository: inseefr/stromae
+      tag: "2.1.70"
     ingress:
       enabled: true
       annotations:
@@ -25,18 +25,18 @@ stromae-v2:
     nameOverride: stromae-api
     replicaCount: 1
     image:
-      name: inseefr/queen-back-office
-      version: 3.5.24
+      repository: inseefr/queen-back-office
+      tag: "3.5.24"
     ingress:
       enabled: true
       hosts:
-        - host: stromae-api.kub.sspcloud.fr
+        - host: stromae-v2-api.kub.sspcloud.fr
           paths:
             - path: /
               pathType: ImplementationSpecific
       tls:
         - hosts:
-            - stromae-api.kub.sspcloud.fr
+            - stromae-v2-api.kub.sspcloud.fr
     env:
       JAVA_OPTS: -Dlogging.config=${CATALINA_BASE}/webapps/log4j2.xml -Dspring.profiles.active=dev -Dspring.config.location=classpath:/,${CATALINA_BASE}/webapps/queenbo.properties
       #Application configuration
