@@ -1,3 +1,4 @@
+{{- if .Values.api.enabled }}
 {{- if or .Values.api.env .Values.postgresql.enabled }}
 apiVersion: v1
 kind: ConfigMap
@@ -19,5 +20,6 @@ data:
   FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST: {{ .Values.postgresql.fullnameOverride | quote}}
   FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PASSWORD: {{ .Values.postgresql.auth.password | quote}}
   FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA: {{ .Values.postgresql.auth.database | quote}}
+{{- end -}}
 {{- end -}}
 {{- end -}}

@@ -1,4 +1,4 @@
-{{- if .Values.api.env }}
+{{- if and .Values.ui.env .Values.ui.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,7 +9,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-{{- range $key, $value := .Values.api.env }}
+{{- range $key, $value := .Values.ui.env }}
   {{ $key }}: {{ $value | quote }}
 {{- end -}}
 {{- end -}}
