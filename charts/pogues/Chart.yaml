@@ -4,7 +4,7 @@ description: A Helm chart for Kubernetes
 
 dependencies:
   - name: postgresql
-    version: 10.3.11
+    version: 11.6.6
     repository: https://charts.bitnami.com/bitnami
 
 # A chart can be either an 'application' or a 'library' chart.
