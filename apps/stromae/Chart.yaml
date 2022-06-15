@@ -3,5 +3,5 @@ name: stromae-deploy
 version: 1.0.0
 dependencies:
   - name: stromae
-    version: 0.1.2
+    version: 0.1.3
     repository: https://inseefrlab.github.io/hackathon-team-bud
