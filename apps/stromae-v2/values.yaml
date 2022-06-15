@@ -13,6 +13,7 @@ stromae-v2:
         - host: stromae-v2.kub.sspcloud.fr
           paths:
             - path: /
+              pathType: ImplementationSpecific
       tls:
         - hosts:
             - stromae-v2.kub.sspcloud.fr
@@ -32,6 +33,7 @@ stromae-v2:
         - host: stromae-api.kub.sspcloud.fr
           paths:
             - path: /
+              pathType: ImplementationSpecific
       tls:
         - hosts:
             - stromae-api.kub.sspcloud.fr
