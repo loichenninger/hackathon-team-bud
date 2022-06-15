@@ -1,0 +1,66 @@
+pogues:
+  ui:
+    nameOverride: pogues-ui
+    replicaCount: 1
+    image:
+      repository: inseefr/pogues
+      tag: ""
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      hosts:
+        - host: pogues.kub.sspcloud.fr
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - pogues.kub.sspcloud.fr
+    env:
+      API_URL: https://pogues-api.kub.sspcloud.fr
+
+  api:
+    nameOverride: stromae-api
+    replicaCount: 1
+    image:
+      repository: inseefr/pogues-back-office
+      tag: ""
+    ingress:
+      enabled: true
+      hosts:
+        - host: pogues-api.kub.sspcloud.fr
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - pogues-api.kub.sspcloud.fr
+    env:
+      FR_INSEE_POGUES_FORCE_SSL: false
+      FR_INSEE_RMESPOGFO_LOG_CONFIGURATION: log4j2.xml
+      FR_INSEE_POGUES_API_HOST: pogues-api.kub.sspcloud.fr
+      FR_INSEE_POGUES_API_NAME: /api
+      FR_INSEE_POGUES_API_SCHEME: https
+      FR_INSEE_POGUES_AUTHENTICATION: NONE
+      FR_INSEE_POGUES_ROLE_ADMIN: Administrateur_Pogues
+      FR_INSEE_POGUES_ROLE_USER: Utilisateur_Pogues
+      FR_INSEE_POGUES_API_REMOTE_METADATA_URL:
+      FR_INSEE_POGUES_API_REMOTE_STROMAE_HOST:
+      FR_INSEE_POGUES_:
+      FR_INSEE_POGUES_:
+      FR_INSEE_POGUES_:
+      FR_INSEE_POGUES_:
+      FR_INSEE_POGUES_:
+
+
+
+
+  postgresql:
+    enabled: true
+    fullnameOverride: pogues-db
+    auth:
+      username: pogues
+      password: poguesPassword
+      database: pogues-db
+      postgresPassword: postgresPassword
