@@ -1,5 +1,5 @@
 apiVersion: v2
-name: stromae
+name: stromae-v2
 description: A Helm chart for Stromae API, UI and DB
 
 dependencies:
@@ -9,5 +9,5 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
 
 type: application
-version: 0.1.3
+version: 0.1.4
 appVersion: "1.16.0"
