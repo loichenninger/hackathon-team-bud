@@ -1,3 +1,2 @@
-*.tgz
+charts
 *.lock
-index.yaml

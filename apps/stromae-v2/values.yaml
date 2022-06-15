@@ -1,6 +1,6 @@
-stromae:
+stromae-v2:
   ui:
-    name: stromae-ui
+    nameOverride: stromae-ui
     replicaCount: 1
     image:
       name: inseefr/stromae
@@ -21,7 +21,7 @@ stromae:
       AUTHENTICATION_TYPE: NONE
 
   api:
-    name: stromae-api
+    nameOverride: stromae-api
     replicaCount: 1
     image:
       name: inseefr/queen-back-office
