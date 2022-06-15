@@ -1,0 +1,54 @@
+stromae-v2:
+  ui:
+    nameOverride: stromae-ui
+    replicaCount: 1
+    image:
+      repository: inseefr/stromae
+      tag: "2.1.70"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      hosts:
+        - host: stromae-v2.dev.insee.io
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - stromae-v2.dev.insee.io
+    env:
+      API_URL: https://stromae-api.dev.insee.io
+      AUTHENTICATION_TYPE: NONE
+
+  api:
+    nameOverride: stromae-api
+    replicaCount: 1
+    image:
+      repository: inseefr/queen-back-office
+      tag: "3.5.24"
+    ingress:
+      enabled: true
+      hosts:
+        - host: stromae-v2-api.dev.insee.io
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - stromae-v2-api.dev.insee.io
+    env:
+      JAVA_OPTS: -Dlogging.config=${CATALINA_BASE}/webapps/log4j2.xml -Dspring.profiles.active=dev -Dspring.config.location=classpath:/,${CATALINA_BASE}/webapps/queenbo.properties
+      #Application configuration
+      FR_INSEE_QUEEN_APPLICATION_MODE: noauth
+      FR_INSEE_QUEEN_APPLICATION_CROSORIGIN: "*"
+      FR_INSEE_QUEEN_PILOTAGE_INTEGRATION_OVERRIDE: true
+
+  postgresql:
+    enabled: true
+    fullnameOverride: stromae-db
+    auth:
+      username: stromae
+      password: stromaePassword
+      database: stromae-db
+      postgresPassword: postgresPassword
