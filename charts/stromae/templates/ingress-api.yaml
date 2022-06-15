@@ -17,7 +17,7 @@ kind: Ingress
 metadata:
   name: {{ $fullNameApi }}
   labels:
-    {{- include "stromae.labels" . | nindent 4 }}
+    {{- include "stromae.api.labels" . | nindent 4 }}
   {{- with .Values.api.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
