@@ -1,0 +1,30 @@
+{{- if or .Values.api.env .Values.postgresql.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "pogues.api.fullname" . }}
+  labels:
+    app: {{ template "pogues.api.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{- if .Values.api.env }}
+{{- range $key, $value := .Values.api.env }}
+  {{ $key }}: {{ $value | quote }}
+{{- end -}}
+{{- end -}}
+{{- if .Values.postgresql.enabled }}
+  fr.insee.pogues.persistence.database.host = pogues-postgresql
+    fr.insee.pogues.persistence.database.port = 5432
+    fr.insee.pogues.persistence.database.schema = Pogues
+    fr.insee.pogues.persistence.database.user = Pogues
+    fr.insee.pogues.persistence.database.password = Pogues
+    fr.insee.pogues.persistence.database.driver = org.postgresql.Driver
+    fr.insee.pogues.persistence.database.table = Pogues
+  FR_INSEE_POGUES_PERSISTENCE_DATABASE_USER: {{ .Values.postgresql.auth.username | quote}}
+  FR_INSEE_POGUES_PERSISTENCE_DATABASE_PASSWORD: {{ .Values.postgresql.auth.password | quote}}
+  FR_INSEE_POGUES_PERSISTENCE_DATABASE_HOST: {{ .Values.postgresql.fullnameOverride | quote}}
+  FR_INSEE_POGUES_PERSISTENCE_DATABASE_SCHEMA: {{ .Values.postgresql.auth.database | quote}}
+{{- end -}}
+{{- end -}}
