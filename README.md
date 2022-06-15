@@ -7,7 +7,7 @@ Collection of Helm (https://helm.sh/) Charts
 To use the repository on Helm (version 3+) :
 
 ```
-helm repo add ddecrulle https://inseefrlab.github.io/hackathon-team-bud
+helm repo add hackathon https://inseefrlab.github.io/hackathon-team-bud
 ```
 
 The repo is also browsable directly https://inseefrlab.github.io/hackathon-team-bud/index.yaml
