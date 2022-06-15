@@ -17,7 +17,7 @@ data:
 {{- if .Values.postgresql.enabled }}
   FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER: {{ .Values.postgresql.auth.username | quote}}
   FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST: {{ .Values.postgresql.fullnameOverride | quote}}
-  FR_INSEE_POGUES_PERSISTENCE_DATABASE_PASSWORD: {{ .Values.postgresql.auth.password | quote}}
+  FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PASSWORD: {{ .Values.postgresql.auth.password | quote}}
   FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA: {{ .Values.postgresql.auth.database | quote}}
 {{- end -}}
 {{- end -}}
