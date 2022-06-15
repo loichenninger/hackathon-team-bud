@@ -207,6 +207,21 @@ entries:
   stromae-v2:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-06-15T08:10:14.301959294Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.26
+    description: A Helm chart for Stromae API, UI and DB
+    digest: 00ef52b4e3da0097cd66db525ef316eaf63095f381ff139749aa99bc99733ae0
+    name: stromae-v2
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/stromae-v2-0.2.1/stromae-v2-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-06-15T07:46:31.222248028Z"
     dependencies:
     - condition: postgresql.enabled
@@ -220,4 +235,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/stromae-v2-0.2.0/stromae-v2-0.2.0.tgz
     version: 0.2.0
-generated: "2022-06-15T07:46:31.222437132Z"
+generated: "2022-06-15T08:10:14.301992194Z"
