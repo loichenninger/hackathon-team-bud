@@ -61,6 +61,22 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/pearl-0.0.2/pearl-0.0.2.tgz
     version: 0.0.2
+  pogues:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-15T09:58:53.499089025Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.26
+    description: A Helm chart for Stromae API, UI and DB
+    digest: e67f238a18e69cf038501a47312bbcb432dff4cc2c16baeac718a3c0ab016fab
+    name: pogues
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/pogues-0.0.1/pogues-0.0.1.tgz
+    version: 0.0.1
   queen:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -280,4 +296,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/hackathon-team-bud/releases/download/stromae-v2-0.2.0/stromae-v2-0.2.0.tgz
     version: 0.2.0
-generated: "2022-06-15T09:51:58.50354813Z"
+generated: "2022-06-15T09:58:53.499301527Z"
