@@ -2,18 +2,14 @@
 Expand the name of the chart.
 */}}
 
-{{- define "stromae.name" -}}
-{{- default .Chart.Name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-
-{{- define "stromae.ui.name" -}}
-{{- printf "%s-%s" (include "stromae.name" .) .Values.ui.nameOverride | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-
 
 {{- define "stromae.api.name" -}}
-{{- printf "%s-%s" (include "stromae.name" .) .Values.api.nameOverride | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
+{{- .Values.api.nameOverride | default (printf "-s-api" .Chart.Name ) }}
+{{- end }}
+
+{{- define "stromae.ui.name" -}}
+{{- .Values.api.nameOverride | default (printf "-s-ui" .Chart.Name ) }}
+{{- end }}
 
 {{/*
 Create a default fully qualified app name.
