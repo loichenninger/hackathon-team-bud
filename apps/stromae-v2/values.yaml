@@ -1,5 +1,6 @@
 stromae-v2:
   ui:
+    enabled: true
     nameOverride: stromae-ui
     replicaCount: 1
     image:
@@ -22,6 +23,7 @@ stromae-v2:
       AUTHENTICATION_TYPE: NONE
 
   api:
+    enabled: true
     nameOverride: stromae-api
     replicaCount: 1
     image:
