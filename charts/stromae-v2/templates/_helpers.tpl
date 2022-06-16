@@ -8,7 +8,7 @@ Expand the name of the chart.
 {{- end }}
 
 {{- define "stromae.ui.name" -}}
-{{- .Values.api.nameOverride | default (printf "-s-ui" .Chart.Name ) }}
+{{- .Values.ui.nameOverride | default (printf "-s-ui" .Chart.Name ) }}
 {{- end }}
 
 {{/*
