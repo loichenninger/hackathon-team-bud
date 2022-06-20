@@ -1,5 +1,4 @@
 {{- if .Values.api.enabled -}}
-{{- $postgresConfigMap := printf "%s-configuration" (include "stromae.postgres.fullname" .) -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,25 +37,16 @@ spec:
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "stromae.postgres.fullname" .}}
+                  name: {{ include "stromae.postgresql.fullname" .}}
                   key: password
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST
-              value: {{ include "stromae.postgres.fullname" .}}
+              value: {{ include "postgresql.primary.fullname" $}}
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ $postgresConfigMap }}
-                  key : user
+              value: {{  .Values.postgresql.auth.username }}
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ $postgresConfigMap }}
-                  key : database
+              value: {{  .Values.postgresql.auth.database }}
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ $postgresConfigMap }}
-                  key : port
+              value: {{  .Values.postgresql.service.port }}
           {{- end }}
           envFrom:
             - configMapRef:

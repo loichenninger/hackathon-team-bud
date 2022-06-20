@@ -43,7 +43,7 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
-{{- define "stromae.postgres.fullname" -}}
+{{- define "stromae.postgresql.fullname" -}}
 {{- if .Values.postgresql.fullnameOverride -}}
 {{- .Values.postgresql.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}

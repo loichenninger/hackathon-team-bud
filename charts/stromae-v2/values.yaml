@@ -206,8 +206,5 @@ postgresql:
     password: userPassword
     postgresPassword: postgresPassword
     database: database
-  primary:
-    configuration:
-      "user": "{{ .Values.auth.username }}"
-      "database": "{{ .Values.auth.database }}"
-      "port": "{{ .Values.primary.service.ports.postgresql }}"
+  service:
+    port: 5432
