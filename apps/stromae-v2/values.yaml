@@ -48,7 +48,7 @@ stromae-v2:
 
   postgresql:
     enabled: true
-    fullnameOverride: stromae-db
+    fullnameOverride: stromae-v2-db
     auth:
       username: stromae
       password: stromaePassword
