@@ -1,4 +1,5 @@
 {{- if .Values.api.enabled -}}
+{{- $postgresConfigMap := printf "%s-configuration" (include "stromae.postgres.fullname" .) -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmap-api.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/api/configmap.yaml") . | sha256sum }}
       labels:
         {{- include "stromae.api.selectorLabels" . | nindent 8 }}
     spec:
@@ -32,6 +33,31 @@ spec:
             {{- toYaml .Values.api.securityContext | nindent 12 }}
           image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          {{- if .Values.postgresql.enabled }}
+          env:
+            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "stromae.postgres.fullname" .}}
+                  key: password
+            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST
+              value: {{ include "stromae.postgres.fullname" .}}
+            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER
+              valueFrom:
+                configMapRef:
+                  name: {{ $postgresConfigMap }}
+                  key : user
+            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
+              valueFrom:
+                configMapRef:
+                  name: {{ $postgresConfigMap }}
+                  key : database
+            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PORT
+              valueFrom:
+                configMapRef:
+                  name: {{ $postgresConfigMap }}
+                  key : port
+          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ template "stromae.api.fullname" . }}
