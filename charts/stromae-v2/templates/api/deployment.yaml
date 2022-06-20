@@ -40,7 +40,7 @@ spec:
                   name: {{ include "stromae.postgresql.fullname" .}}
                   key: password
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST
-              value: {{ include "postgresql.primary.fullname" $}}
+              value: {{  .Values.postgresql.fullnameOverride | quote }}
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER
               value: {{  .Values.postgresql.auth.username | quote }}
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
