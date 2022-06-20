@@ -198,7 +198,7 @@ api:
       jobLabel: ""
 
 postgresql:
-  enabled: false
+  enabled: true
   fullnameOverride: ""
   nameOverride: ""
   auth:
@@ -206,5 +206,3 @@ postgresql:
     password: userPassword
     postgresPassword: postgresPassword
     database: database
-  service:
-    port: 5432

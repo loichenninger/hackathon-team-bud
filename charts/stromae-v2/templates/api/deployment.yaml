@@ -45,8 +45,6 @@ spec:
               value: {{  .Values.postgresql.auth.username | quote }}
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
               value: {{  .Values.postgresql.auth.database | quote }}
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PORT
-              value: {{  .Values.postgresql.service.port | quote }}
           {{- end }}
           envFrom:
             - configMapRef:
