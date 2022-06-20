@@ -44,17 +44,17 @@ spec:
               value: {{ include "stromae.postgres.fullname" .}}
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: {{ $postgresConfigMap }}
                   key : user
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: {{ $postgresConfigMap }}
                   key : database
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PORT
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: {{ $postgresConfigMap }}
                   key : port
           {{- end }}
