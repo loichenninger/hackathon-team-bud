@@ -4,4 +4,4 @@ version: 1.0.0
 dependencies:
   - name: stromae-v2
     version: 0.5.3
-    repository: https://inseefrlab.github.io/hackathon-team-bud
+    repository: https://inseefr.github.io/Helm-Charts/
