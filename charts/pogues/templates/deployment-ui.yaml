@@ -13,8 +13,10 @@ spec:
       {{- include "pogues.ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.ui.podAnnotations }}
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmap-ui.yaml") . | sha256sum }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
         {{- include "pogues.ui.selectorLabels" . | nindent 8 }}
     spec:
@@ -31,9 +33,9 @@ spec:
             {{- toYaml .Values.ui.securityContext | nindent 12 }}
           image: "{{ .Values.ui.image.repository }}:{{ .Values.ui.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.ui.image.pullPolicy }}
-          envFrom:
-            - configMapRef:
-                name: {{ template "pogues.ui.fullname" . }}
+          env:
+          - name: API_URL
+            value: {{ .Values.ui.env.API_URL | quote}}
           ports:
             - name: http
               containerPort: 80
