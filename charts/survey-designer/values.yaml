@@ -1,82 +1,168 @@
-# Default values for survey-designer.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+pogues:
+  ui:
+    image:
+      repository: inseefr/pogues
+      pullPolicy: IfNotPresent
+      tag: ""
 
-replicaCount: 1
+    ingress:
+      hosts:
+        - host: chart-example.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
 
-image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+    env:
+      API_URL: "https://chart-example-api.local/api"
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+  api:
+    image:
+      repository: inseefr/pogues-back-office
+      pullPolicy: IfNotPresent
+      tag: ""
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+    ingress:
+      hosts:
+        - host: chart-example-api.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
 
-podAnnotations: {}
+    environment:
+      ssl: false
+      log:
+        configuration: classpath:log4j2.xml
+      api:
+        host: chart-example-api.local
+        name: ""
+        scheme: https
+      persistence:
+        database:
+          host: pogues-db
+          port: 5432
+          driver: org.postgresql.Driver
+          table: Pogues
+      authentification: NONE
+      role:
+        admin: Administrateur_Pogues
+        user: Utilisateurs_Pogues
+      remote:
+        metadata:
+          url: https://ddi-access-services-example.local/api
+        stromae:
+          host: ""
+          vis:
+            path: ""
+          orbeon:
+            host: ""
+        queen:
+          host: https://queen-sandbox.local
+          vis:
+            path: queen/visualize?questionnaire=
+        stromaev2:
+          vis:
+            url: https://stromae-v2-sandbox.local/visualize?questionnaire=
+        eno:
+          host: eno-example.local
+          scheme: https
 
-podSecurityContext: {}
-  # fsGroup: 2000
+  postgresql:
+    fullnameOverride: pogues-db
+    auth:
+      username: Pogues
+      password: Pogues
+      postgresPassword: postgresPassword
+      database: Pogues
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+eno-ws:
+  image:
+    repository: inseefr/eno-ws
+    pullPolicy: IfNotPresent
+    tag: ""
 
-service:
-  type: ClusterIP
-  port: 80
+  ingress:
+    hosts:
+      - host: eno-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
 
-ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+ddi-access-services:
+  image:
+    repository: inseefr/ddi-access-services
+    pullPolicy: IfNotPresent
+    tag: ""
 
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  ingress:
+    hosts:
+      - host: ddi-access-services-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
 
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  properties: |-
+    # SSL
+    fr.insee.rmes.force.ssl=false
+    # Log4J configuration File
+    fr.insee.rmespogbo.log.configuration=log4j2.xml
+    # Swagger host
+    fr.insee.rmes.api.host = ddi-access-services-example.local
+    fr.insee.rmes.api.name= /api
+    fr.insee.rmes.api.scheme= https
+    # Metadata service
 
-nodeSelector: {}
+    fr.insee.rmes.search.DDIItemRepository.impl = DDIItemRepositoryDBImpl
+    fr.insee.rmes.search.db.host = pogues-db
+    fr.insee.rmes.search.db.port = 5432
+    fr.insee.rmes.search.db.schema = Pogues
+    fr.insee.rmes.search.db.user = Pogues
+    fr.insee.rmes.search.db.password = Pogues
+    fr.insee.rmes.search.db.driver = org.postgresql.Driver
+    fr.insee.rmes.search.db.table = ddi_item
 
-tolerations: []
+queen:
+  ui:
+      enabled: true
+      nameOverride: queen-ui
+      replicaCount: 1
+      image:
+        repository: inseefr/queen
+        tag: ""
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        hosts:
+          - host: queen-sandbox.local
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        tls:
+          - hosts:
+              - queen-sandbox.local
+      env:
+        QUEEN_URL: https://queen-sandbox.local
+        authenticationType: NONE
 
-affinity: {}
+stromae-v2:
+  ui:
+      enabled: true
+      nameOverride: stromae-ui
+      replicaCount: 1
+      image:
+        repository: inseefr/stromae
+        tag: ""
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        hosts:
+          - host: stromae-v2-sandbox.local
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        tls:
+          - hosts:
+              - stromae-v2-sandbox.local
+      env:
+        AUTHENTICATION_TYPE: NONE

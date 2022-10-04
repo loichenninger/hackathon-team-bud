@@ -11,7 +11,7 @@ ui:
     tag: ""
 
   imagePullSecrets: []
-  nameOverride: ""
+  nameOverride: "pogues-ui"
   fullnameOverride: ""
 
   serviceAccount:
@@ -46,9 +46,11 @@ ui:
     enabled: true
     className: ""
     annotations:
-      {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
     hosts:
       - host: chart-example.local
         paths:
@@ -97,7 +99,7 @@ api:
     tag: ""
 
   imagePullSecrets: []
-  nameOverride: ""
+  nameOverride: "pogues-api"
   fullnameOverride: ""
 
   serviceAccount:
@@ -129,7 +131,7 @@ api:
     port: 80
 
   ingress:
-    enabled: false
+    enabled: true
     className: ""
     annotations:
       kubernetes.io/ingress.class: nginx
@@ -146,6 +148,8 @@ api:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+
+  environment: {}
 
   resources:
     {}
